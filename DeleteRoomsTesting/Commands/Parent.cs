@@ -5,8 +5,6 @@ using CommandSystem;
 
 namespace DonatorPlugin.Commands
 {
-
-    [CommandHandler(typeof(RemoteAdminCommandHandler))]
     [CommandHandler(typeof(ClientCommandHandler))]
     public class Parent : ParentCommand
     {
@@ -16,10 +14,12 @@ namespace DonatorPlugin.Commands
         public override void LoadGeneratedCommands()
         {
             RegisterCommand(new CreateVotation());
+            RegisterCommand(new VotoYes());
+            RegisterCommand(new VotoNo());
         }
         protected override bool ExecuteParent(ArraySegment<string> arguments, ICommandSender sender, out string response)
         {
-            response = "Error especifica! Available: evento <evento>";
+            response = "Error pon cr <evento>, yes o no";
             return false;
         }
     }
